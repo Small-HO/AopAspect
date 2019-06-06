@@ -1,0 +1,46 @@
+/** ------------------------- 统一依赖管理 ---------------------- */
+ext {
+    //  App 相关版本控制
+    versions = [
+            versionCode:        1,              //  版本号
+            versionName:        "1.0",          //  版本名称
+            applicationId:      "com.smallho.aopaspect",  //  项目ID
+            minSdkVersion:      16,             //  支持SDK的最低版本
+            targetSdkVersion:   27,             //  支持SDK的目标版本
+            compileSdkVersion:  28,             //  编译的SDK版本
+            buildToolsVersion:  "27.0.3",       //  编译的Tools版本
+            testInstrumentationRunner: "android.support.test.runner.AndroidJUnitRunner"
+    ]
+
+    //  依赖相关版本控制 (depVersion 的头数字是和targetSdkVersion 版本一样的。)
+    depVersion = [
+            supportLibraryVersion   : "27.+",
+
+            runnerVersion           : "1.+",
+            espressoVersion         : "3.+",
+            layoutVersion           : "1.+",
+
+            junitVersion            : "4.+",
+
+            aspectjVersion          : "1.8.13",
+    ]
+
+    //  依赖
+    deps = [
+            //  常用引用
+            support : [
+                    support     : "com.android.support:support-v4:${depVersion.supportLibraryVersion}",     //  v4包
+                    appcompat   : "com.android.support:appcompat-v7:${depVersion.supportLibraryVersion}",   //  v7包
+            ],
+            //  工具引用
+            utils   : [
+                    runner      : "com.android.support.test:runner:${depVersion.runnerVersion}",
+                    espresso    : "com.android.support.test.espresso:espresso-core:${depVersion.espressoVersion}",
+                    junit       : "junit:junit:${depVersion.junitVersion}",
+                    layouts     : "com.android.support.constraint:constraint-layout:${depVersion.layoutVersion}",   //  约束布局
+            ],
+            aop     : [
+                    aspectj : "org.aspectj:aspectjrt:${depVersion.aspectjVersion}",
+            ]
+    ]
+}

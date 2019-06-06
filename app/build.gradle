@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.hujiang.android-aspectjx'
+
+android {
+    def versions = rootProject.ext.versions
+    compileSdkVersion versions.compileSdkVersion
+
+    defaultConfig {
+        applicationId versions.applicationId
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode versions.versionCode
+        versionName versions.versionName
+        testInstrumentationRunner versions.testInstrumentationRunner
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    def dependencies = rootProject.ext.deps
+
+    implementation dependencies.support.appcompat
+    implementation dependencies.utils.layouts
+    testImplementation dependencies.utils.junit
+    androidTestImplementation dependencies.utils.runner
+    androidTestImplementation dependencies.utils.espresso
+}
