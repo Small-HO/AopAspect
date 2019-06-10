@@ -24,7 +24,7 @@ public class LoginInterceptAspect {
     private static final String Tag = "LoginInterceptAspect";
 
     /** 找到指定注解的切点 */
-    @Pointcut("execution(@com.model.lib_aspectj.Interface.LoginIntercept * *(..))")
+    @Pointcut("execution(@com.smallho.aopaspect.Interface.LoginIntercept * *(..))")
     public void executeCheckLogin(){}
 
     /** 切面 */
